@@ -1,17 +1,17 @@
 server:
   port: 8081
 spring:
-  application:
-    name: pms-service
   cloud:
     nacos:
-      config:
+      discovery:
         server-addr: 127.0.0.1:8848
   datasource:
     url: jdbc:mysql://192.168.254.100:3306/guli_pms
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
+  redis:
+    host: 192.168.254.100
 mybatis-plus:
   mapper-locations: classpath:mapper/pms/*.xml # ¶ÁÈ¡Ó³ÉäÎÄ¼þ
   global-config:

@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/gmall-oms/pom.xml" />
         <option value="$PROJECT_DIR$/gmall-sms/pom.xml" />
         <option value="$PROJECT_DIR$/gmall-wms/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-gateway/pom.xml" />
       </list>
     </option>
   </component>
