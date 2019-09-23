@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +33,16 @@ import com.atguigu.gmall.pms.service.CategoryService;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+
+    @GetMapping("/list/tree")
+    public Resp<Object> categoryTree(@RequestParam(value = "level",defaultValue = "0")Integer level,@RequestParam(value = "parentCid",required = false)Integer parentCid){
+
+        List<CategoryEntity> categorylist = categoryService.categotyTree(level,parentCid);
+
+        return Resp.ok(categorylist);
+    }
+
 
     /**
      * 列表
