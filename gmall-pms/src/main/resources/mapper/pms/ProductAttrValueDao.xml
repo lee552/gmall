@@ -14,5 +14,14 @@
         <result property="quickShow" column="quick_show"/>
     </resultMap>
 
+    <select id="querySearchAttrValueBySpuId" resultMap="productAttrValueMap">
+        SELECT p.`attr_id`,p.`attr_name`,p.`attr_sort`,p.`attr_value`,p.`spu_id`
+        FROM pms_product_attr_value p
+        JOIN pms_attr a
+        ON p.`attr_id` = a.`attr_id`
+        WHERE a.`search_type`=1
+        AND p.`spu_id`=#{spuId}
+    </select>
+
 
 </mapper>

@@ -13,6 +13,7 @@ import com.atguigu.core.bean.QueryCondition;
  * @email lee552@yeah.net
  * @date 2019-09-22 16:03:31
  */
+
 public interface SpuInfoDescService extends IService<SpuInfoDescEntity> {
 
     PageVo queryPage(QueryCondition params);

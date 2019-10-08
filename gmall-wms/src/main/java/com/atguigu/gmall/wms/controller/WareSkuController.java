@@ -1,6 +1,7 @@
 package com.atguigu.gmall.wms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +33,13 @@ import com.atguigu.gmall.wms.service.WareSkuService;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    @GetMapping("{skuId}")
+    public Resp<List<WareSkuEntity>> queryWareSkuById(@PathVariable(value = "skuId")Long skuId){
+        List<WareSkuEntity> wareSkuEntities = wareSkuService.queryWareSkuById(skuId);
+        return Resp.ok(wareSkuEntities);
+    }
+
 
     /**
      * 列表

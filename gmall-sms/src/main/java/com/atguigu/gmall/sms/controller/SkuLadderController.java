@@ -1,12 +1,12 @@
 package com.atguigu.gmall.sms.controller;
 
 import java.util.Arrays;
-import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +64,8 @@ public class SkuLadderController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('sms:skuladder:save')")
-    public Resp<Object> save(@RequestBody SkuLadderEntity skuLadder){
-		skuLadderService.save(skuLadder);
+    public Resp<Object> saveLadder(@RequestBody SkuBaseInfoVO skuBaseInfoVO){
+		skuLadderService.saveLadder(skuBaseInfoVO);
 
         return Resp.ok(null);
     }

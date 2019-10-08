@@ -5,6 +5,8 @@ import com.atguigu.gmall.wms.entity.WareSkuEntity;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 
+import java.util.List;
+
 
 /**
  * 商品库存
@@ -16,5 +18,7 @@ import com.atguigu.core.bean.QueryCondition;
 public interface WareSkuService extends IService<WareSkuEntity> {
 
     PageVo queryPage(QueryCondition params);
+
+    List<WareSkuEntity> queryWareSkuById(Long skuId);
 }
 

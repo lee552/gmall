@@ -18,7 +18,7 @@ import lombok.Data;
 @ApiModel
 @Data
 @TableName("pms_attr")
-public class AttrEntity implements Serializable {
+public class  AttrEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**

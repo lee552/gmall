@@ -35,7 +35,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
 
-    @GetMapping("/list/tree")
+    @GetMapping
     public Resp<Object> categoryTree(@RequestParam(value = "level",defaultValue = "0")Integer level,@RequestParam(value = "parentCid",required = false)Integer parentCid){
 
         List<CategoryEntity> categorylist = categoryService.categotyTree(level,parentCid);

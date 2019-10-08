@@ -12,7 +12,20 @@
         <option value="$PROJECT_DIR$/gmall-wms/pom.xml" />
         <option value="$PROJECT_DIR$/gmall-generator/pom.xml" />
         <option value="$PROJECT_DIR$/gmall-gateway/pom.xml" />
+        <option value="$USER_HOME$/Desktop/springcloud-jpa-seata/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-sms-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-search/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-pms-interface/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/../data/web/springcloud-jpa-seata/account-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../data/web/springcloud-jpa-seata/business-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../data/web/springcloud-jpa-seata/order-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../data/web/springcloud-jpa-seata/pom.xml" />
+        <option value="$PROJECT_DIR$/../data/web/springcloud-jpa-seata/storage-service/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">

@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$USER_HOME$/Desktop/springcloud-jpa-seata" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Desktop/springcloud-jpa-seata/account-service" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Desktop/springcloud-jpa-seata/business-service" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Desktop/springcloud-jpa-seata/order-service" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Desktop/springcloud-jpa-seata/storage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../data/web/springcloud-jpa-seata" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../data/web/springcloud-jpa-seata/account-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../data/web/springcloud-jpa-seata/business-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../data/web/springcloud-jpa-seata/order-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../data/web/springcloud-jpa-seata/storage-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-admin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-generator" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-oms" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-oms/src/main/resources/application.yml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/gmall-pms" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-pms-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-search" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-sms" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-sms-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-sms/src/main/resources/application.yml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/gmall-ums" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-ums/src/main/resources/application.yml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/gmall-wms" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-wms-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-wms/src/main/resources/application.yml" charset="GBK" />
   </component>
 </project>

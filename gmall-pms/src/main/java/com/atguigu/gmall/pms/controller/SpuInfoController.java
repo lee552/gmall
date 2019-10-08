@@ -1,12 +1,18 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
+import com.atguigu.core.bean.Query;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.entity.SkuInfoEntity;
+import com.atguigu.gmall.pms.vo.SpuInfoVO;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +38,28 @@ import com.atguigu.gmall.pms.service.SpuInfoService;
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
+
+    @ApiOperation("分页查询已发布商品信息")
+    @PostMapping("{status}")
+    public Resp<List<SpuInfoEntity>> querySpuByStatus(@RequestBody QueryCondition condition,@PathVariable("status")Integer status){
+
+        IPage<SpuInfoEntity> spuInfoEntityIPage = spuInfoService.page(new Query<SpuInfoEntity>().getPage(condition), new QueryWrapper<SpuInfoEntity>().eq("publish_status", status));
+        List<SpuInfoEntity> spuInfoEntities = spuInfoEntityIPage.getRecords();
+
+
+        return Resp.ok(spuInfoEntities);
+    }
+
+
+    @GetMapping
+    public Resp<PageVo> querySpuByCarIdAndKey(QueryCondition condition,@RequestParam(value = "key")String key,
+                                        @RequestParam(value = "catId",defaultValue = "0")Long catId){
+
+        PageVo pageVo = spuInfoService.querySpuByCarIdAndKey(condition,key,catId);
+
+        return Resp.ok(pageVo);
+    }
+
 
     /**
      * 列表
@@ -64,8 +92,8 @@ public class SpuInfoController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('pms:spuinfo:save')")
-    public Resp<Object> save(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.save(spuInfo);
+    public Resp<Object> save(@RequestBody SpuInfoVO spuInfoVO){
+		spuInfoService.saveSpuAndSku(spuInfoVO);
 
         return Resp.ok(null);
     }

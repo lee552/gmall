@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2019-09-22 16:03:31
  */
 @Mapper
+
 public interface SpuInfoDescDao extends BaseMapper<SpuInfoDescEntity> {
 	
 }
