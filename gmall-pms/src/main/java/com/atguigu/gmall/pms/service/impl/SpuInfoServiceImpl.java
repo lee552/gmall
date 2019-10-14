@@ -8,11 +8,14 @@ import com.atguigu.gmall.pms.vo.*;
 import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -74,6 +77,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     SkuSaleAttrValueService skuSaleAttrValueService;
     @Autowired
     SmsFeign smsFeign;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @GlobalTransactional
     @Override
@@ -101,6 +106,11 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             smsFeign.saveLadder(skuBaseInfoVO);
 
         });
+
+        String key = "insert";
+
+
+        sendMessage(spuId, key);
 
         //int a = 1/0;
 
@@ -145,6 +155,13 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
         });
 */
+    }
+
+    private void sendMessage(Long spuId, String key) {
+        Map<String,Object> map= new HashMap<>();
+        map.put("spuId",spuId);
+        map.put("key",key);
+        amqpTemplate.convertAndSend("SPU_SKU_OPTION_EXCHANGE","item.insert",map);
     }
 
     @Transactional

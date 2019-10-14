@@ -8,6 +8,7 @@ import java.util.Map;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.vo.CategoryVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,13 +37,22 @@ public class CategoryController {
 
 
     @GetMapping
-    public Resp<Object> categoryTree(@RequestParam(value = "level",defaultValue = "0")Integer level,@RequestParam(value = "parentCid",required = false)Integer parentCid){
+    public Resp<List<CategoryEntity>> categoryTree(@RequestParam(value = "level",defaultValue = "0")Integer level,@RequestParam(value = "parentCid",required = false)Integer parentCid){
 
         List<CategoryEntity> categorylist = categoryService.categotyTree(level,parentCid);
 
         return Resp.ok(categorylist);
     }
 
+
+    @GetMapping("{pid}")
+    public Resp<List<CategoryVO>> queryCatesAndSubs(@PathVariable("pid") Long pid) {
+
+        List<CategoryVO> categoryVOS = categoryService.queryCatesAndSubs(pid);
+
+
+        return Resp.ok(categoryVOS);
+    }
 
     /**
      * 列表
@@ -63,7 +73,7 @@ public class CategoryController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{catId}")
     @PreAuthorize("hasAuthority('pms:category:info')")
-    public Resp<CategoryEntity> info(@PathVariable("catId") Long catId){
+    public Resp<CategoryEntity> infoCat(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
         return Resp.ok(category);
