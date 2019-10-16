@@ -1,0 +1,20 @@
+server:
+  port: 8090
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.254.100
+  rabbitmq:
+    host: 192.168.254.100
+    username: lee552
+    password: lee552
+    virtual-host: /lee552
+cart:
+  jwt:
+    pubKeyPath: D:\\tmp\\rsa\\rsa.pub
+    cookieName: MEMBER_TOKEN
+    userKeyName: user_key
+    expire: 43200

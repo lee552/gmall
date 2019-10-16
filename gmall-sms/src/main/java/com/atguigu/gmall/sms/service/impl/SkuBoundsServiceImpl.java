@@ -1,5 +1,6 @@
 package com.atguigu.gmall.sms.service.impl;
 
+import com.atguigu.gmall.sms.vo.SaleVO;
 import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,18 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsDao, SkuBoundsEnt
         BeanUtils.copyProperties(skuBaseInfoVO,skuBoundsEntity);
         skuBoundsEntity.setWork(work);
         skuBoundsService.save(skuBoundsEntity);
+    }
+
+    @Autowired
+    private SkuBoundsDao skuBoundsDao;
+
+    @Override
+    public SaleVO queryBoundsBySkuId(Long skuId) {
+        SkuBoundsEntity skuBoundsEntity = skuBoundsDao.selectOne(new QueryWrapper<SkuBoundsEntity>().eq("sku_id", skuId));
+        SaleVO saleVO = new SaleVO();
+        saleVO.setType(0);
+        saleVO.setName("赠送成长积分:"+skuBoundsEntity.getGrowBounds()+",赠送购物积分:"+skuBoundsEntity.getGrowBounds());
+        return saleVO;
     }
 
 }

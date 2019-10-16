@@ -6,6 +6,7 @@ import java.util.Arrays;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.sms.vo.SaleVO;
 import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,6 +34,12 @@ public class SkuBoundsController {
     @Autowired
     private SkuBoundsService skuBoundsService;
 
+    @ApiOperation("根据skuId查询优惠信息")
+    @GetMapping("{skuId}")
+    public Resp<SaleVO> queryBoundsBySkuId(@PathVariable("skuId")Long skuId){
+        SaleVO saleVO = skuBoundsService.queryBoundsBySkuId(skuId);
+        return Resp.ok(saleVO);
+    }
 
 
     /**

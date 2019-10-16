@@ -4,16 +4,19 @@ import com.atguigu.gmall.pms.entity.*;
 import com.atguigu.gmall.pms.service.AttrService;
 import com.atguigu.gmall.pms.service.SkuImagesService;
 import com.atguigu.gmall.pms.service.SkuSaleAttrValueService;
+import com.atguigu.gmall.pms.vo.Cart;
 import com.atguigu.gmall.pms.vo.SkuInfoVO;
-import com.atguigu.gmall.pms.vo.SkuSaleAttrValueVO;
-import net.bytebuddy.asm.Advice;
+import com.atguigu.gmall.pms.vo.SkuSaleVO;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -31,15 +34,17 @@ import org.springframework.util.CollectionUtils;
 public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> implements SkuInfoService {
 
     @Autowired
-    SkuInfoDao skuInfoDao;
+    private SkuInfoDao skuInfoDao;
     @Autowired
-    SkuInfoService skuInfoService;
+    private SkuInfoService skuInfoService;
     @Autowired
-    SkuImagesService skuImagesService;
+    private SkuImagesService skuImagesService;
     @Autowired
-    AttrService attrService;
+    private AttrService attrService;
     @Autowired
-    SkuSaleAttrValueService skuSaleAttrValueService;
+    private SkuSaleAttrValueService skuSaleAttrValueService;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Override
     public PageVo queryPage(QueryCondition params) {
@@ -88,7 +93,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
             skuImagesService.save(skuImagesEntity);
         });
 
-        List<SkuSaleAttrValueVO> saleAttrs = skuInfoVO.getSaleAttrs();
+        List<SkuSaleVO> saleAttrs = skuInfoVO.getSaleAttrs();
         //保存sku销售属性信息
         saleAttrs.forEach(saleAttr->{
             SkuSaleAttrValueEntity skuSaleAttrValueEntity = new SkuSaleAttrValueEntity();
@@ -102,5 +107,17 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         });
         return skuId;
     }
+
+    @Override
+    public void updateSkuInfo(SkuInfoEntity skuInfoEntity) {
+        skuInfoDao.updateById(skuInfoEntity);
+        Map<String,String> map = new HashMap<>();
+
+        map.put("price",skuInfoEntity.getPrice().toString());
+        map.put("skuId",skuInfoEntity.getSkuId().toString());
+
+        amqpTemplate.convertAndSend("GMALL_SKUINFO_EXCHANGE","SKUINFO_UPDATE",map);
+    }
+
 
 }

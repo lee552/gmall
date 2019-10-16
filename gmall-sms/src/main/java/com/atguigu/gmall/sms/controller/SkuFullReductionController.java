@@ -6,6 +6,7 @@ import java.util.Arrays;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.sms.vo.SaleVO;
 import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,6 +33,14 @@ import com.atguigu.gmall.sms.service.SkuFullReductionService;
 public class SkuFullReductionController {
     @Autowired
     private SkuFullReductionService skuFullReductionService;
+
+    @ApiOperation("根据skuId查询商品满减信息")
+    @GetMapping("{skuId}")
+    public Resp<SaleVO> queryFullRedutionBySkuId(@PathVariable("skuId")Long skuId){
+
+        SaleVO saleVO = skuFullReductionService.queryFullRedutionBySkuId(skuId);
+        return Resp.ok(saleVO);
+    }
 
     /**
      * 列表

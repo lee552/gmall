@@ -34,12 +34,12 @@
                     <artifactId>mysql-connector-java</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.projectlombok</groupId>
-                    <artifactId>lombok</artifactId>
-                </exclusion>
-                <exclusion>
                     <groupId>com.baomidou</groupId>
                     <artifactId>mybatis-plus</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-core</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>

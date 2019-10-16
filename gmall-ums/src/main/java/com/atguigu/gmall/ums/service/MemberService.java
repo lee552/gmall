@@ -16,5 +16,13 @@ import com.atguigu.core.bean.QueryCondition;
 public interface MemberService extends IService<MemberEntity> {
 
     PageVo queryPage(QueryCondition params);
+
+    Boolean check(String data, Integer type);
+
+    void makeCode(String phoneNum) throws IllegalAccessException;
+
+    Boolean regist(MemberEntity memberEntity, String code);
+
+    MemberEntity query(String username, String password);
 }
 

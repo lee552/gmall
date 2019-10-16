@@ -1,5 +1,6 @@
 package com.atguigu.gmall.sms.service.impl;
 
+import com.atguigu.gmall.sms.vo.SaleVO;
 import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,18 @@ public class SkuFullReductionServiceImpl extends ServiceImpl<SkuFullReductionDao
         skuFullReductionEntity.setAddOther(skuBaseInfoVO.getFullAddOther());
         skuFullReductionService.save(skuFullReductionEntity);
 
+    }
+    @Autowired
+    private SkuFullReductionDao skuFullReductionDao;
+
+    @Override
+    public SaleVO queryFullRedutionBySkuId(Long skuId) {
+        SkuFullReductionEntity skuFullReductionEntity = skuFullReductionDao.selectOne(new QueryWrapper<SkuFullReductionEntity>().eq("sku_id", skuId));
+        SaleVO saleVO = new SaleVO();
+        saleVO.setType(1);
+        String key = skuFullReductionEntity.getAddOther() == 1? "可叠加其他优惠":"不可叠加其他优惠";
+        saleVO.setName("满"+skuFullReductionEntity.getFullPrice()+"减"+skuFullReductionEntity.getReducePrice()+","+key);
+        return saleVO;
     }
 
 }

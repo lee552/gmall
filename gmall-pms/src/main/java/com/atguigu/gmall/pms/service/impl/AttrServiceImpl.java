@@ -1,11 +1,15 @@
 package com.atguigu.gmall.pms.service.impl;
 
 import com.atguigu.gmall.pms.dao.AttrAttrgroupRelationDao;
+import com.atguigu.gmall.pms.dao.SkuInfoDao;
+import com.atguigu.gmall.pms.dao.SkuSaleAttrValueDao;
 import com.atguigu.gmall.pms.entity.AttrAttrgroupRelationEntity;
+import com.atguigu.gmall.pms.entity.SkuInfoEntity;
+import com.atguigu.gmall.pms.entity.SkuSaleAttrValueEntity;
 import com.atguigu.gmall.pms.vo.AttrVO;
+import com.atguigu.gmall.pms.vo.BaseGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -16,6 +20,9 @@ import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.gmall.pms.dao.AttrDao;
 import com.atguigu.gmall.pms.entity.AttrEntity;
 import com.atguigu.gmall.pms.service.AttrService;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service("attrService")
@@ -60,6 +67,28 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         attrAttrgroupRelationEntity.setAttrId(attr.getAttrId());
         attrAttrgroupRelationDao.insert(attrAttrgroupRelationEntity);
 
+    }
+
+    @Autowired
+    private SkuInfoDao skuInfoDao;
+    @Autowired
+    private SkuSaleAttrValueDao skuSaleAttrValueDao;
+
+    @Override
+    public List<SkuSaleAttrValueEntity> queryAttrInfo(Long skuId) {
+
+        List<SkuSaleAttrValueEntity> skuSaleAttrValueEntities = skuSaleAttrValueDao.selectList(new QueryWrapper<SkuSaleAttrValueEntity>().eq("sku_id", skuId));
+        /*List<Long> attrIds = skuSaleAttrValueEntities.stream().map(skuSaleAttrValueEntity -> {
+            return skuSaleAttrValueEntity.getAttrId();
+        }).collect(Collectors.toList());
+
+        List<AttrEntity> attrEntities = attrDao.selectList(new QueryWrapper<AttrEntity>().in("attr_id", attrIds));
+
+
+        List<SkuInfoEntity> skuInfoEntities = skuInfoDao.selectList(new QueryWrapper<SkuInfoEntity>().eq("sku_id", skuId));*/
+
+
+        return skuSaleAttrValueEntities;
     }
 
 

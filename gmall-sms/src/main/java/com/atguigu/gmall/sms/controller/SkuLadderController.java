@@ -6,6 +6,7 @@ import java.util.Arrays;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.sms.vo.SaleVO;
 import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,6 +33,13 @@ import com.atguigu.gmall.sms.service.SkuLadderService;
 public class SkuLadderController {
     @Autowired
     private SkuLadderService skuLadderService;
+
+    @GetMapping("{skuId}")
+    public Resp<SaleVO> querySkuladderBySkuId(@PathVariable("skuId")Long skuId){
+        SaleVO saleVO = skuLadderService.querySkuladderBySkuId(skuId);
+
+        return Resp.ok(saleVO);
+    }
 
     /**
      * 列表

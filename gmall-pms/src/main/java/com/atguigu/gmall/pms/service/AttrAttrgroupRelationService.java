@@ -1,9 +1,12 @@
 package com.atguigu.gmall.pms.service;
 
+import com.atguigu.gmall.pms.entity.AttrEntity;
+import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.pms.entity.AttrAttrgroupRelationEntity;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
+import lombok.Data;
 
 import java.util.List;
 
@@ -20,5 +23,7 @@ public interface AttrAttrgroupRelationService extends IService<AttrAttrgroupRela
     PageVo queryPage(QueryCondition params);
 
     void deleteAttrGroupRelationById(List<AttrAttrgroupRelationEntity> list);
+
+
 }
 

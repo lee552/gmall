@@ -1,6 +1,9 @@
 package com.atguigu.gmall.pms.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -25,6 +28,17 @@ public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao
         );
 
         return new PageVo(page);
+    }
+
+    @Autowired
+    private SkuSaleAttrValueDao skuSaleAttrValueDao;
+
+    @Override
+    public List<SkuSaleAttrValueEntity> queryListBySkuId(Long skuId) {
+
+        List<SkuSaleAttrValueEntity> skuSaleAttrValueEntities = skuSaleAttrValueDao.selectList(new QueryWrapper<SkuSaleAttrValueEntity>().eq("sku_id", skuId));
+
+        return skuSaleAttrValueEntities;
     }
 
 }

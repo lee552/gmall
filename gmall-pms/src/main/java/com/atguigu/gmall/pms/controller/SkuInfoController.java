@@ -8,8 +8,10 @@ import java.util.Map;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.service.impl.SpuInfoServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +35,12 @@ import com.atguigu.gmall.pms.service.SkuInfoService;
 public class SkuInfoController {
     @Autowired
     private SkuInfoService skuInfoService;
+
+    @PostMapping("updatePrice")
+    public Resp<Object> updateSkuInfo(SkuInfoEntity skuInfoEntity){
+        skuInfoService.updateSkuInfo(skuInfoEntity);
+        return  Resp.ok(null);
+    }
 
     @ApiOperation("根据spuid查询spu的所有sku信息")
     @GetMapping("{spuId}")
@@ -76,6 +84,8 @@ public class SkuInfoController {
     @PreAuthorize("hasAuthority('pms:skuinfo:save')")
     public Resp<Object> save(@RequestBody SkuInfoEntity skuInfo){
 		skuInfoService.save(skuInfo);
+
+
 
         return Resp.ok(null);
     }

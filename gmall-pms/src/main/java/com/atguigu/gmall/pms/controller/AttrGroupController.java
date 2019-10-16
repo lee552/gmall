@@ -2,14 +2,14 @@ package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.service.AttrAttrgroupRelationService;
 import com.atguigu.gmall.pms.vo.AttrGroupVO;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.atguigu.gmall.pms.vo.BaseGroupVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,24 @@ import com.atguigu.gmall.pms.service.AttrGroupService;
 public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
+
+
+    @GetMapping("{catId}/{spuId}/{skuId}")
+    public Resp<List<BaseGroupVO>> queryGroupWithAttrValueByCid(@PathVariable("catId")Long catId,@PathVariable("spuId")Long spuId,@PathVariable("skuId")Long skuId){
+
+        List<BaseGroupVO> baseGroupVOS = attrGroupService.queryGroupWithAttrValueByCid(catId, spuId, skuId);
+
+        return Resp.ok(baseGroupVOS);
+
+    }
+
+
+    @GetMapping("{attrId}")
+    public Resp<AttrGroupEntity> queryAttrGroupByAttrId(@PathVariable("attrId")Long attrId){
+        AttrGroupEntity attrGroupEntity = attrGroupService.queryAttrGroupByAttrId(attrId);
+
+        return Resp.ok(attrGroupEntity);
+    }
 
     @GetMapping("/withattrs/cat/{catId}")
     public Resp<List<AttrGroupVO>> queryAttrGroupAndAttr(@PathVariable(value = "catId")Long catId){

@@ -1,0 +1,28 @@
+server:
+  port: 8089
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+auth:
+  jwt:
+    secret: chushenruhua~@!_-@
+    pubKeyPath: D:\\tmp\\rsa\\rsa.pub
+    priKeyPath: D:\\tmp\\rsa\\rsa.pri
+    expire: 30
+    cookieName: MEMBER_TOKEN
+
+#  private String secret; // ��Կ
+#
+#  private String pubKeyPath;// ��Կ
+#
+#  private String priKeyPath;// ˽Կ
+#
+#  private int expire;// token����ʱ��
+#
+#  private PublicKey publicKey; // ��Կ
+#
+#  private PrivateKey privateKey; // ˽Կ
+#
+#  private String cookieName; // cookie����

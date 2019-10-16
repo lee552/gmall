@@ -13,6 +13,7 @@
         <module>gmall-core</module>
         <module>gmall-admin</module>
         <module>gmall-wms-interface</module>
+        <module>gmall-ums-interface</module>
     </modules>
 
 </project>

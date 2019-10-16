@@ -1,6 +1,5 @@
 package com.atguigu.gmall.pms.service.impl;
 
-import com.atguigu.gmall.pms.dao.SpuInfoDescDao;
 import com.atguigu.gmall.pms.entity.*;
 import com.atguigu.gmall.pms.feign.SmsFeign;
 import com.atguigu.gmall.pms.service.*;
@@ -26,7 +25,6 @@ import com.atguigu.core.bean.QueryCondition;
 
 import com.atguigu.gmall.pms.dao.SpuInfoDao;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 
 
 @Service("spuInfoService")

@@ -96,6 +96,7 @@ public class SpuListener {
                 }
 
                 Index action = new Index.Builder(goodsVO).index("goods").type("info").id(skuInfoEntity.getSkuId().toString()).build();
+
                 try {
                     jestClient.execute(action);
                 } catch (IOException e) {

@@ -1,5 +1,6 @@
 package com.atguigu.gmall.sms.service;
 
+import com.atguigu.gmall.sms.vo.SaleVO;
 import com.atguigu.gmall.sms.vo.SkuBaseInfoVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.sms.entity.SkuFullReductionEntity;
@@ -19,5 +20,7 @@ public interface SkuFullReductionService extends IService<SkuFullReductionEntity
     PageVo queryPage(QueryCondition params);
 
     void saveFullReduction(SkuBaseInfoVO skuBaseInfoVO);
+
+    SaleVO queryFullRedutionBySkuId(Long skuId);
 }
 
