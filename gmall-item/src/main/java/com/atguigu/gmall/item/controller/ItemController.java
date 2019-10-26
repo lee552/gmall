@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+
 @RestController
 @RequestMapping("item")
 public class ItemController {
@@ -18,7 +20,7 @@ public class ItemController {
 
 
     @GetMapping("{skuId}")
-    public Resp<ItemVO> getItem(@PathVariable("skuId")Long skuId){
+    public Resp<ItemVO> getItem(@PathVariable("skuId")Long skuId) throws ExecutionException, InterruptedException {
         ItemVO itemVO = itemService.getItem(skuId);
 
         return Resp.ok(itemVO);

@@ -73,7 +73,7 @@ paths:
           description: 排序字段
           in: query
           type: string
-        - name: order
+        - name: service
           description: 排序方式，如：asc、desc
           in: query
           type: string
@@ -231,7 +231,7 @@ paths:
           description: 排序字段
           in: query
           type: string
-        - name: order
+        - name: service
           description: 排序方式，如：asc、desc
           in: query
           type: string
@@ -519,7 +519,7 @@ paths:
           description: 排序字段
           in: query
           type: string
-        - name: order
+        - name: service
           description: 排序方式，如：asc、desc
           in: query
           type: string
@@ -555,7 +555,7 @@ paths:
           description: 排序字段
           in: query
           type: string
-        - name: order
+        - name: service
           description: 排序方式，如：asc、desc
           in: query
           type: string
@@ -676,7 +676,7 @@ paths:
           description: 排序字段
           in: query
           type: string
-        - name: order
+        - name: service
           description: 排序方式，如：asc、desc
           in: query
           type: string
@@ -788,7 +788,7 @@ paths:
           description: 排序字段
           in: query
           type: string
-        - name: order
+        - name: service
           description: 排序方式，如：asc、desc
           in: query
           type: string
@@ -972,7 +972,7 @@ paths:
           description: 排序字段
           in: query
           type: string
-        - name: order
+        - name: service
           description: 排序方式，如：asc、desc
           in: query
           type: string

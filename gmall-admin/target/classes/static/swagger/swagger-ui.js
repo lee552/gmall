@@ -1039,7 +1039,7 @@ window.Docs = {
      * Required reading: http://javascriptweblog.wordpress.com/2011/12/05/extending-javascript-natives/
      */
 
-    // Shortcut to an often accessed properties, in order to avoid multiple
+    // Shortcut to an often accessed config, in order to avoid multiple
     // dereference that costs universally. This also holds a reference to known-good
     // functions.
     var $Array = Array;
@@ -1328,7 +1328,7 @@ window.Docs = {
             // TODO
             // NOTE Function objects created using Function.prototype.bind do not
             // have a prototype property or the [[Code]], [[FormalParameters]], and
-            // [[Scope]] internal properties.
+            // [[Scope]] internal config.
             // XXX can't delete prototype in pure-js.
 
             // 22. Return F.
@@ -3099,7 +3099,7 @@ Handlebars.registerHelper('renderTextParam', function(param) {
     paramType = Handlebars.Utils.escapeExpression(paramType);
 
     var dataVendorExtensions = Object.keys(param).filter(function(property) {
-        // filter X-data- properties
+        // filter X-data- config
         return property.match(/^X-data-/i) !== null;
     }).reduce(function(result, property) {
         // remove X- from property name, so it results in html attributes like data-foo='bar'
@@ -6935,7 +6935,7 @@ var Operation = module.exports = function (parent, scheme, operationId, httpMeth
 
     if (successResponse) {
       successResponse.vendorExtensions = response.vendorExtensions;
-      // Attach response properties
+      // Attach response config
       if (response.description) {
         successResponse.description = response.description;
       }
@@ -8058,7 +8058,7 @@ var rootParent = {}
  *
  * Note:
  *
- *   - Firefox 4-29 lacks support for adding new properties to `Uint8Array` instances,
+ *   - Firefox 4-29 lacks support for adding new config to `Uint8Array` instances,
  *     See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.
  *
  *   - Safari 5-7 lacks support for changing the `Object.prototype.constructor` property
@@ -8098,7 +8098,7 @@ function kMaxLength () {
  * =============
  *
  * The Buffer constructor returns instances of `Uint8Array` that are augmented
- * with function properties for all the node `Buffer` API functions. We use
+ * with function config for all the node `Buffer` API functions. We use
  * `Uint8Array` so that square bracket notation works as expected -- it returns
  * a single octet.
  *
@@ -12370,7 +12370,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
           hasContent = true;
 
           if (state.tag !== null || state.anchor !== null) {
-            throwError(state, 'alias node should not have any properties');
+            throwError(state, 'alias node should not have any config');
           }
 
         } else if (readPlainScalar(state, flowIndent, CONTEXT_FLOW_IN === nodeContext)) {
@@ -14007,7 +14007,7 @@ var LazyWrapper = require('../internal/LazyWrapper'),
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -14143,7 +14143,7 @@ var baseEach = require('../internal/baseEach'),
  * value, else `false`.
  *
  * If an object is provided for `predicate` the created `_.matches` style
- * callback returns `true` for elements that have the properties of the given
+ * callback returns `true` for elements that have the config of the given
  * object, else `false`.
  *
  * @static
@@ -14301,7 +14301,7 @@ var arrayMap = require('../internal/arrayMap'),
  * value, else `false`.
  *
  * If an object is provided for `iteratee` the created `_.matches` style
- * callback returns `true` for elements that have the properties of the given
+ * callback returns `true` for elements that have the config of the given
  * object, else `false`.
  *
  * Many lodash methods are guarded to work as iteratees for methods like
@@ -14835,12 +14835,12 @@ module.exports = baseClone;
 
 },{"../lang/isArray":140,"../lang/isObject":144,"./arrayCopy":62,"./arrayEach":63,"./baseAssign":66,"./baseForOwn":76,"./initCloneArray":116,"./initCloneByTag":117,"./initCloneObject":118,"./isHostObject":120}],69:[function(require,module,exports){
 /**
- * Copies properties of `source` to `object`.
+ * Copies config of `source` to `object`.
  *
  * @private
- * @param {Object} source The object to copy properties from.
+ * @param {Object} source The object to copy config from.
  * @param {Array} props The property names to copy.
- * @param {Object} [object={}] The object to copy properties to.
+ * @param {Object} [object={}] The object to copy config to.
  * @returns {Object} Returns `object`.
  */
 function baseCopy(source, props, object) {
@@ -14863,7 +14863,7 @@ var isObject = require('../lang/isObject');
 
 /**
  * The base implementation of `_.create` without support for assigning
- * properties to the created object.
+ * config to the created object.
  *
  * @private
  * @param {Object} prototype The object to inherit from.
@@ -14957,7 +14957,7 @@ var createBaseFor = require('./createBaseFor');
 
 /**
  * The base implementation of `baseForIn` and `baseForOwn` which iterates
- * over `object` properties returned by `keysFunc` invoking `iteratee` for
+ * over `object` config returned by `keysFunc` invoking `iteratee` for
  * each property. Iteratee functions may exit iteration early by explicitly
  * returning `false`.
  *
@@ -15116,7 +15116,7 @@ var argsTag = '[object Arguments]',
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -16201,7 +16201,7 @@ function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stack
   if (arrLength != othLength && !(isLoose && othLength > arrLength)) {
     return false;
   }
-  // Ignore non-index properties.
+  // Ignore non-index config.
   while (++index < arrLength) {
     var arrValue = array[index],
         othValue = other[index],
@@ -16285,7 +16285,7 @@ var keys = require('../object/keys');
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -16479,7 +16479,7 @@ module.exports = indexOfNaN;
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -16493,7 +16493,7 @@ function initCloneArray(array) {
   var length = array.length,
       result = new array.constructor(length);
 
-  // Add array properties assigned by `RegExp#exec`.
+  // Add array config assigned by `RegExp#exec`.
   if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
     result.index = array.index;
     result.input = array.input;
@@ -17042,7 +17042,7 @@ var isArguments = require('../lang/isArguments'),
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -17165,7 +17165,7 @@ var baseClone = require('../internal/baseClone'),
  *
  * **Note:** This method is loosely based on the
  * [structured clone algorithm](http://www.w3.org/TR/html5/infrastructure.html#internal-structured-cloning-algorithm).
- * The enumerable properties of `arguments` objects and objects created by
+ * The enumerable config of `arguments` objects and objects created by
  * constructors other than `Object` are cloned to plain `Object` objects. An
  * empty object is returned for uncloneable values such as functions, DOM nodes,
  * Maps, Sets, and WeakMaps.
@@ -17217,7 +17217,7 @@ var isArrayLike = require('../internal/isArrayLike'),
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /** Native method references. */
@@ -17300,7 +17300,7 @@ var isArguments = require('./isArguments'),
 /**
  * Checks if `value` is empty. A value is considered empty unless it's an
  * `arguments` object, array, string, or jQuery-like collection with a length
- * greater than `0` or an object with own enumerable properties.
+ * greater than `0` or an object with own enumerable config.
  *
  * @static
  * @memberOf _
@@ -17391,7 +17391,7 @@ var objectProto = Object.prototype;
 /** Used to resolve the decompiled source of functions. */
 var fnToString = Function.prototype.toString;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /** Used to detect if a method is native. */
@@ -17471,7 +17471,7 @@ var objectTag = '[object Object]';
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -17485,7 +17485,7 @@ var objToString = objectProto.toString;
  * `Object` constructor or one with a `[[Prototype]]` of `null`.
  *
  * **Note:** This method assumes objects created by the `Object` constructor
- * have no inherited enumerable properties.
+ * have no inherited enumerable config.
  *
  * @static
  * @memberOf _
@@ -17518,9 +17518,9 @@ function isPlainObject(value) {
       (!hasOwnProperty.call(value, 'constructor') && (Ctor = value.constructor, typeof Ctor == 'function' && !(Ctor instanceof Ctor)))) {
     return false;
   }
-  // IE < 9 iterates inherited properties before own properties. If the first
+  // IE < 9 iterates inherited config before own config. If the first
   // iterated property is an object's own property then there are no inherited
-  // enumerable properties.
+  // enumerable config.
   var result;
   if (support.ownLast) {
     baseForIn(value, function(subValue, key, object) {
@@ -17529,9 +17529,9 @@ function isPlainObject(value) {
     });
     return result !== false;
   }
-  // In most environments an object's own properties are iterated before
-  // its inherited properties. If the last iterated property is an object's
-  // own property then there are no inherited enumerable properties.
+  // In most environments an object's own config are iterated before
+  // its inherited config. If the last iterated property is an object's
+  // own property then there are no inherited enumerable config.
   baseForIn(value, function(subValue, key) {
     result = key;
   });
@@ -17757,7 +17757,7 @@ var errorProto = Error.prototype,
     objectProto = Object.prototype,
     stringProto = String.prototype;
 
-/** Used to check objects for own properties. */
+/** Used to check objects for own config. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -17766,7 +17766,7 @@ var hasOwnProperty = objectProto.hasOwnProperty;
  */
 var objToString = objectProto.toString;
 
-/** Used to avoid iterating over non-enumerable properties in IE < 9. */
+/** Used to avoid iterating over non-enumerable config in IE < 9. */
 var nonEnumProps = {};
 nonEnumProps[arrayTag] = nonEnumProps[dateTag] = nonEnumProps[numberTag] = { 'constructor': true, 'toLocaleString': true, 'toString': true, 'valueOf': true };
 nonEnumProps[boolTag] = nonEnumProps[stringTag] = { 'constructor': true, 'toString': true, 'valueOf': true };
@@ -17960,7 +17960,7 @@ var support = {};
   for (var key in new Ctor) { props.push(key); }
 
   /**
-   * Detect if `name` or `message` properties of `Error.prototype` are
+   * Detect if `name` or `message` config of `Error.prototype` are
    * enumerable by default (IE < 9, Safari < 5.1).
    *
    * @memberOf _.support
@@ -17970,7 +17970,7 @@ var support = {};
     propertyIsEnumerable.call(errorProto, 'name');
 
   /**
-   * Detect if `prototype` properties are enumerable by default.
+   * Detect if `prototype` config are enumerable by default.
    *
    * Firefox < 3.6, Opera > 9.50 - Opera < 11.60, and Safari < 5.1
    * (if the prototype or a property on the prototype has been set)
@@ -17983,9 +17983,9 @@ var support = {};
   support.enumPrototypes = propertyIsEnumerable.call(Ctor, 'prototype');
 
   /**
-   * Detect if properties shadowing those on `Object.prototype` are non-enumerable.
+   * Detect if config shadowing those on `Object.prototype` are non-enumerable.
    *
-   * In IE < 9 an object's own properties, shadowing non-enumerable ones,
+   * In IE < 9 an object's own config, shadowing non-enumerable ones,
    * are made non-enumerable as well (a.k.a the JScript `[[DontEnum]]` bug).
    *
    * @memberOf _.support
@@ -17994,7 +17994,7 @@ var support = {};
   support.nonEnumShadows = !/valueOf/.test(props);
 
   /**
-   * Detect if own properties are iterated after inherited properties (IE < 9).
+   * Detect if own config are iterated after inherited config (IE < 9).
    *
    * @memberOf _.support
    * @type boolean
@@ -19645,7 +19645,7 @@ Promise.prototype.fbind = function (/*...args*/) {
 };
 
 /**
- * Requests the names of the owned properties of a promised
+ * Requests the names of the owned config of a promised
  * object in a future turn.
  * @param object    promise or immediate reference for target object
  * @return promise for the keys of the eventually settled object
@@ -20502,7 +20502,7 @@ Response.prototype.get = function(field){
 };
 
 /**
- * Set header related properties:
+ * Set header related config:
  *
  *   - `.type` the content type without params
  *
@@ -20553,7 +20553,7 @@ Response.prototype._parseBody = function(str){
  * specific, and `.statusType` is the class of error ranging from 1..5
  * sometimes useful for mapping respond colors etc.
  *
- * "sugar" properties are also defined for common cases. Currently providing:
+ * "sugar" config are also defined for common cases. Currently providing:
  *
  *   - .noContent
  *   - .badRequest
@@ -21389,7 +21389,7 @@ exports.redirects = function(n){
 };
 
 /**
- * Convert to a plain javascript object (not JSON string) of scalar properties.
+ * Convert to a plain javascript object (not JSON string) of scalar config.
  * Note as this method is designed to return a useful non-this value,
  * it cannot be chained.
  *
@@ -21556,7 +21556,7 @@ function Emitter(obj) {
 };
 
 /**
- * Mixin the emitter properties.
+ * Mixin the emitter config.
  *
  * @param {Object} obj
  * @return {Object}

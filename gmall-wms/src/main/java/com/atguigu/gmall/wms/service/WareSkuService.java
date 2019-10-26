@@ -1,5 +1,6 @@
 package com.atguigu.gmall.wms.service;
 
+import com.atguigu.gmall.wms.entity.SkuLockVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.wms.entity.WareSkuEntity;
 import com.atguigu.core.bean.PageVo;
@@ -20,5 +21,7 @@ public interface WareSkuService extends IService<WareSkuEntity> {
     PageVo queryPage(QueryCondition params);
 
     List<WareSkuEntity> queryWareSkuById(Long skuId);
+
+    String checkAndLockStock(List<SkuLockVO> skuLockVOS);
 }
 

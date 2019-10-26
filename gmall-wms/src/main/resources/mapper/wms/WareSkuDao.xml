@@ -14,4 +14,20 @@
     </resultMap>
 
 
+    <select id="checkSkuWare" resultMap="wareSkuMap" parameterType="com.atguigu.gmall.wms.entity.SkuLockVO">
+        SELECT * FROM wms_ware_sku WHERE sku_id = #{skuId} AND stock-stock_locked > #{num};
+    </select>
+
+    <update id="lock">
+        UPDATE wms_ware_sku SET stock_locked = stock_locked + #{num} WHERE id = #{id}
+    </update>
+
+    <update id="unLock" parameterType="com.atguigu.gmall.wms.entity.SkuLockVO">
+        UPDATE wms_ware_sku SET stock_locked = stock_locked-#{num} WHERE id = #{wareSkuId}
+    </update>
+
+    <update id="skuWareDown" parameterType="com.atguigu.gmall.wms.entity.SkuLockVO">
+        UPDATE wms_ware_sku SET stock = stock - #{num},stock_locked = stock_locked -#{num} WHERE sku_id = #{skuId} AND ware_id = #{wareSkuId}
+    </update>
+
 </mapper>

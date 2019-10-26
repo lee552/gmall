@@ -66,7 +66,7 @@ public class GmallCacheAspect {
         if(StringUtils.isNotBlank(cache)){
             Class returnType = signature.getMethod().getReturnType();
 
-            return JSON.parseArray(cache,returnType);
+            return JSON.parseObject(cache,returnType);
         }
         return null;
     }

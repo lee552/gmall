@@ -1,16 +1,15 @@
 package com.atguigu.gmall.ums.service.impl;
 
-import com.atguigu.core.utils.DateUtils;
-import com.atguigu.core.utils.JwtUtils;
-import com.atguigu.core.utils.RsaUtils;
-import com.atguigu.core.utils.SendSmsUtil;
+import com.atguigu.core.utils.SmsPrefixUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -63,16 +62,24 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
 
     @Autowired
     private StringRedisTemplate redisTemplate;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Override
     public void makeCode(String phoneNum) throws IllegalAccessException {
-        String ifExistCode = redisTemplate.opsForValue().get(SendSmsUtil.CODE_PREFIX + phoneNum + ":");
+        String ifExistCode = redisTemplate.opsForValue().get(SmsPrefixUtil.CODE_PREFIX + phoneNum + ":");
         if(!StringUtils.isEmpty(ifExistCode)){
             throw new IllegalAccessException("请不要重复申请注册码");
         }
         Integer code = (int) ((Math.random() * 9 + 1) * 100000);
-        SendSmsUtil.SendSms(phoneNum,code.toString());
-        redisTemplate.opsForValue().set(SendSmsUtil.CODE_PREFIX+phoneNum+":",code.toString(),15, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(SmsPrefixUtil.CODE_PREFIX+phoneNum+":",code.toString(),15, TimeUnit.MINUTES);
+
+        Map<String,String> map = new HashMap<>();
+
+        map.put("code",code.toString());
+        map.put("phoneNum",phoneNum.toString());
+        amqpTemplate.convertAndSend("GMALL_CODE_EXCHANGE","REGIST_CODE",map);
+
 
     }
 
@@ -86,7 +93,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         if(StringUtils.isEmpty(mobile)){
             return false;
         }
-        String key = SendSmsUtil.CODE_PREFIX+mobile+":";
+        String key = SmsPrefixUtil.CODE_PREFIX+mobile+":";
         String redisCode = redisTemplate.opsForValue().get(key);
         if(StringUtils.isEmpty(redisCode)){
             return false;

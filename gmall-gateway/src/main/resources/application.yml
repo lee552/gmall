@@ -47,6 +47,12 @@ spring:
             - Path=/api/item/**
           filters:
             - RewritePath=/api/(?<segment>.*), /$\{segment}
+        - id: service-route
+          uri: lb://service-service
+          predicates:
+            - Path=/api/service/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
 gateway:
   jwt:
     pubKeyPath: D:\\tmp\\rsa\\rsa.pub

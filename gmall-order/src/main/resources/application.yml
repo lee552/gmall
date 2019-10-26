@@ -1,0 +1,37 @@
+server:
+  port: 8092
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.254.100
+  rabbitmq:
+    host: 192.168.254.100
+    username: lee552
+    password: lee552
+    virtual-host: /lee552
+  datasource:
+    url: jdbc:mysql://192.168.254.100:3306/guli_oms
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+order:
+  jwt:
+    pubKeyPath: D:\\tmp\\rsa\\rsa.pub
+    cookieName: MEMBER_TOKEN
+    userKeyName: user_key
+    expire: 43200
+thread:
+  pool:
+    corePoolSize: 20
+    maximumPoolSize: 50
+    keepAliveTime: 3
+alipay:
+  app_id: 2016101400681858
+  notify_url: http://2ij7453083.qicp.vip/order/pay/alipay/success # 域名是哲西云提供的域名，路径是订单支付成功回调的路径
+  return_url: http://localhost:2000/pay/success.html
+  sign_type: RSA2
+  charset: utf-8
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do

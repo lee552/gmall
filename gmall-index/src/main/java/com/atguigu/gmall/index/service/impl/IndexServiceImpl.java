@@ -41,6 +41,7 @@ public class IndexServiceImpl implements IndexService {
         if(StringUtils.isEmpty(categoryVOsString)){*/
             Resp<List<CategoryVO>> listResp = gmallPmsFeign.queryCatesAndSubs(pid);
 
+
             return listResp;
        /* }
 

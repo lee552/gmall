@@ -19,6 +19,10 @@
         <option value="$PROJECT_DIR$/gmall-auth/pom.xml" />
         <option value="$PROJECT_DIR$/gmall-item/pom.xml" />
         <option value="$PROJECT_DIR$/gmall-cart/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-mms/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-order/pom.xml" />
+        <option value="$PROJECT_DIR$/gmall-chat/pom.xml" />
+        <option value="$USER_HOME$/Desktop/享学课堂【Redis】训练营3/第二节课/cache/pom.xml" />
       </list>
     </option>
   </component>

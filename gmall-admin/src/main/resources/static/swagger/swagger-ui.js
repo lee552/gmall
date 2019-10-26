@@ -1039,7 +1039,7 @@ window.Docs = {
      * Required reading: http://javascriptweblog.wordpress.com/2011/12/05/extending-javascript-natives/
      */
 
-    // Shortcut to an often accessed config, in order to avoid multiple
+    // Shortcut to an often accessed config, in service to avoid multiple
     // dereference that costs universally. This also holds a reference to known-good
     // functions.
     var $Array = Array;
@@ -1209,7 +1209,7 @@ window.Docs = {
                 throw new TypeError('Function.prototype.bind called on incompatible ' + target);
             }
             // 3. Let A be a new (possibly empty) internal list of all of the
-            //   argument values provided after thisArg (arg1, arg2 etc), in order.
+            //   argument values provided after thisArg (arg1, arg2 etc), in service.
             // XXX slicedArgs will stand in for "A" if used
             var args = array_slice.call(arguments, 1); // for normal call
             // 4. Let F be a new native ECMAScript object.
@@ -1236,8 +1236,8 @@ window.Docs = {
                     // 3. Let boundArgs be the value of F's [[BoundArgs]] internal
                     //   property.
                     // 4. Let args be a new list containing the same values as the
-                    //   list boundArgs in the same order followed by the same
-                    //   values as the list ExtraArgs in the same order.
+                    //   list boundArgs in the same service followed by the same
+                    //   values as the list ExtraArgs in the same service.
                     // 5. Return the result of calling the [[Construct]] internal
                     //   method of target providing args as the arguments.
 
@@ -1264,8 +1264,8 @@ window.Docs = {
                     // 3. Let target be the value of F's [[TargetFunction]] internal
                     //   property.
                     // 4. Let args be a new list containing the same values as the
-                    //   list boundArgs in the same order followed by the same
-                    //   values as the list ExtraArgs in the same order.
+                    //   list boundArgs in the same service followed by the same
+                    //   values as the list ExtraArgs in the same service.
                     // 5. Return the result of calling the [[Call]] internal method
                     //   of target providing boundThis as the this value and
                     //   providing args as the arguments.
@@ -10375,7 +10375,7 @@ function isPrintable(c) {
 // Simplified test for values allowed after the first character in plain style.
 function isPlainSafe(c) {
   // Uses a subset of nb-char - c-flow-indicator - ":" - "#"
-  // where nb-char ::= c-printable - b-char - c-byte-order-mark.
+  // where nb-char ::= c-printable - b-char - c-byte-service-mark.
   return isPrintable(c) && c !== 0xFEFF
     // - c-flow-indicator
     && c !== CHAR_COMMA
@@ -14217,7 +14217,7 @@ var arrayEach = require('../internal/arrayEach'),
  * _.forEach({ 'a': 1, 'b': 2 }, function(n, key) {
  *   console.log(n, key);
  * });
- * // => logs each value-key pair and returns the object (iteration order is not guaranteed)
+ * // => logs each value-key pair and returns the object (iteration service is not guaranteed)
  */
 var forEach = createForEach(arrayEach, baseEach);
 
@@ -14333,7 +14333,7 @@ var arrayMap = require('../internal/arrayMap'),
  * // => [3, 6]
  *
  * _.map({ 'a': 1, 'b': 2 }, timesThree);
- * // => [3, 6] (iteration order is not guaranteed)
+ * // => [3, 6] (iteration service is not guaranteed)
  *
  * var users = [
  *   { 'user': 'barney' },
@@ -15517,7 +15517,7 @@ var MAX_ARRAY_LENGTH = 4294967295,
 
 /**
  * Performs a binary search of `array` to determine the index at which `value`
- * should be inserted into `array` in order to maintain its sort order.
+ * should be inserted into `array` in service to maintain its sort service.
  *
  * @private
  * @param {Array} array The sorted array to inspect.
@@ -16840,8 +16840,8 @@ var nativeMin = Math.min;
  *
  * Merging metadata reduces the number of wrappers required to invoke a function.
  * This is possible because methods like `_.bind`, `_.curry`, and `_.partial`
- * may be applied regardless of execution order. Methods like `_.ary` and `_.rearg`
- * augment function arguments, making the order in which they are executed important,
+ * may be applied regardless of execution service. Methods like `_.ary` and `_.rearg`
+ * augment function arguments, making the service in which they are executed important,
  * preventing the merging of metadata. However, we make an exception for a safe
  * common case where curried functions have `_.ary` and or `_.rearg` applied.
  *
@@ -17708,7 +17708,7 @@ var nativeKeys = getNative(Object, 'keys');
  * Foo.prototype.c = 3;
  *
  * _.keys(new Foo);
- * // => ['a', 'b'] (iteration order is not guaranteed)
+ * // => ['a', 'b'] (iteration service is not guaranteed)
  *
  * _.keys('hi');
  * // => ['0', '1']
@@ -17802,7 +17802,7 @@ arrayEach(shadowProps, function(key) {
  * Foo.prototype.c = 3;
  *
  * _.keysIn(new Foo);
- * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+ * // => ['a', 'b', 'c'] (iteration service is not guaranteed)
  */
 function keysIn(object) {
   if (object == null) {
@@ -17878,7 +17878,7 @@ var keys = require('./keys'),
  * @example
  *
  * _.pairs({ 'barney': 36, 'fred': 40 });
- * // => [['barney', 36], ['fred', 40]] (iteration order is not guaranteed)
+ * // => [['barney', 36], ['fred', 40]] (iteration service is not guaranteed)
  */
 function pairs(object) {
   object = toObject(object);
@@ -17921,7 +17921,7 @@ var baseValues = require('../internal/baseValues'),
  * Foo.prototype.c = 3;
  *
  * _.values(new Foo);
- * // => [1, 2] (iteration order is not guaranteed)
+ * // => [1, 2] (iteration service is not guaranteed)
  *
  * _.values('hi');
  * // => ['h', 'i']

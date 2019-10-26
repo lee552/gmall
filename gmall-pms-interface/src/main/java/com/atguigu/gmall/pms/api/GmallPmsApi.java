@@ -49,4 +49,7 @@ public interface GmallPmsApi {
 
     @GetMapping("pms/attrgroup/{catId}/{spuId}/{skuId}")
     public Resp<List<BaseGroupVO>> queryGroupWithAttrValueByCid(@PathVariable("catId")Long catId, @PathVariable("spuId")Long spuId, @PathVariable("skuId")Long skuId);
+
+    @GetMapping("pms/spuinfo/info/{id}")
+    public Resp<SpuInfoEntity> info(@PathVariable("id") Long id);
 }

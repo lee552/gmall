@@ -43,7 +43,7 @@ public class SkuImagesServiceImpl extends ServiceImpl<SkuImagesDao, SkuImagesEnt
 
             images.add(skuImagesEntity.getImgUrl());
         });
-        return null;
+        return images;
     }
 
 }

@@ -6,7 +6,7 @@ import com.atguigu.gmall.cart.feign.GmallPmsFeign;
 import com.atguigu.gmall.cart.interceptor.LoginInterceptor;
 import com.atguigu.gmall.cart.service.CartService;
 import com.atguigu.gmall.pms.vo.Cart;
-import com.atguigu.gmall.cart.vo.UserInfo;
+import com.atguigu.core.bean.UserInfo;
 import com.atguigu.gmall.pms.entity.SkuInfoEntity;
 import com.atguigu.gmall.pms.entity.SkuSaleAttrValueEntity;
 import org.springframework.beans.factory.annotation.Autowired;

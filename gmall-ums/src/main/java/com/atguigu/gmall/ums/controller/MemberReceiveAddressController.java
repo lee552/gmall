@@ -1,6 +1,7 @@
 package com.atguigu.gmall.ums.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +33,12 @@ import com.atguigu.gmall.ums.service.MemberReceiveAddressService;
 public class MemberReceiveAddressController {
     @Autowired
     private MemberReceiveAddressService memberReceiveAddressService;
+
+    @GetMapping("{userId}")
+    public Resp<List<MemberReceiveAddressEntity>> queryReciveAddress(@PathVariable("userId")Long userId){
+        List<MemberReceiveAddressEntity> memberReceiveAddressEntities = memberReceiveAddressService.queryReciveAddress(userId);
+        return Resp.ok(memberReceiveAddressEntities);
+    }
 
     /**
      * 列表

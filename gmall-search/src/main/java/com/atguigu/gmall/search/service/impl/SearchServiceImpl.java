@@ -200,7 +200,7 @@ public class SearchServiceImpl implements SearchService {
             sourceBuilder.highlighter(new HighlightBuilder().field("name").preTags("<em style='color: red'>").postTags("<em>"));
         }
 
-        // 4.排序 0：综合排序  1：销量  2：价格 order=1:asc
+        // 4.排序 0：综合排序  1：销量  2：价格 service=1:asc
         String order = searchParamVO.getOrder();
         if (order != null) {
             String[] orderParams = StringUtils.split(order, ":");

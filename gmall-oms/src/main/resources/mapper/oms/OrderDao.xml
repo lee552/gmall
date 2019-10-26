@@ -50,4 +50,16 @@
     </resultMap>
 
 
+    <update id="closeOrder">
+        UPDATE oms_order SET status = 4 WHERE order_sn = #{orderToken};
+    </update>
+
+    <update id="orderSuccess">
+        UPDATE oms_order SET status = 1 WHERE order_sn = #{orderToken};
+    </update>
+
+    <select id="selectOrderByorderToken">
+        SELECT status FROM oms_order WHERE order_sn = #{orderToken}
+    </select>
+
 </mapper>

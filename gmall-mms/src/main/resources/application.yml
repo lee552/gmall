@@ -1,0 +1,16 @@
+server:
+  port: 9996
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    compatibility-verifier:
+      enabled: false
+  redis:
+    host: 192.168.254.100
+  rabbitmq:
+    host: 192.168.254.100
+    username: lee552
+    password: lee552
+    virtual-host: /lee552
